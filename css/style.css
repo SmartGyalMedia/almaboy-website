@@ -1,0 +1,1139 @@
+/* ==========================================================================
+   ALMA BOY — STYLESHEET
+   Shared by every page on the site. Sections are ordered to roughly match
+   the order things appear on the homepage, top to bottom.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   ROOT VARIABLES
+   Change a color or font here and it updates everywhere on the site.
+   ========================================================================== */
+
+:root {
+  --black: #000000;
+  --cream: #F7F2E7;
+  --gold: #FBC02D;
+  --green: #12874B;
+  --red: #D62828;
+
+  --font-display: 'Archivo Black', sans-serif;
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+
+/* ==========================================================================
+   RESET & BASE
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: var(--font-head);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+section {
+  padding: 76px 0;
+}
+
+
+/* ==========================================================================
+   TAGS
+   Small colored labels used all over the site (e.g. "The artist", "Soca").
+   ========================================================================== */
+
+.tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.tag-gold { background: var(--gold); color: var(--black); }
+.tag-green { background: var(--green); color: var(--cream); }
+.tag-red { background: var(--red); color: var(--cream); }
+.tag-line { background: transparent; border: 1.5px solid currentColor; }
+
+
+/* ==========================================================================
+   NAV
+   Sticky bar at the top of every page. Logo + wordmark on the left,
+   nav-links on the right (hidden under 720px, no mobile menu built yet).
+   ========================================================================== */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(14, 13, 12, 0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 3px solid var(--gold);
+}
+
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--cream);
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--cream);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+}
+
+
+/* ==========================================================================
+   BUTTONS
+   Shared by the hero, booking section, and anywhere else with a CTA.
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-solid { background: var(--gold); color: var(--black); }
+.btn-line { border-color: var(--cream); color: var(--cream); }
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.hero {
+  background: var(--black);
+  color: var(--cream);
+  position: relative;
+  padding: 80px 0 0;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.hero-cutout {
+  position: absolute;
+  right: 1%;
+  bottom: 0;
+  height: 94%;
+  width: auto;
+  max-width: 54%;
+  object-fit: contain;
+  object-position: bottom;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 64px;
+}
+
+.hero-text {
+  max-width: 560px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 9vw, 100px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-line {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 20px;
+  max-width: 460px;
+  color: var(--cream);
+  opacity: 0.92;
+  margin-bottom: 14px;
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  max-width: 440px;
+  margin-bottom: 30px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-spotify {
+  max-width: 420px;
+  margin-top: 18px;
+}
+
+@media (max-width: 820px) {
+  .hero-cutout {
+    position: static;
+    display: block;
+    height: auto;
+    width: 70%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .hero-content { padding-bottom: 0; }
+  .hero-text { text-align: center; margin: 0 auto; }
+  .hero-line, .hero-sub { max-width: none; }
+  .hero-ctas { justify-content: center; }
+}
+
+
+/* ==========================================================================
+   PHOTO FRAME
+   Shared "angled corner" image treatment, used for the hero cutout's
+   frame-mate and anywhere a single portrait needs the signature clip.
+   ========================================================================== */
+
+.photo-frame {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 34px 100%, 0 calc(100% - 34px));
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  display: block;
+}
+
+
+/* ==========================================================================
+   SECTION HEADERS
+   The "eyebrow" kicker + rule line used at the top of every section
+   (Discography, Videos, Alma Boy Live, Find Him, Press Photos, etc.)
+   ========================================================================== */
+
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.eyebrow-row h2 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rule {
+  flex: 1;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.15;
+}
+
+.kicker-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.see-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-top: 40px;
+  transition: transform 0.15s ease;
+}
+
+.see-all-link:hover { transform: translateX(4px); }
+
+
+/* ==========================================================================
+   BIO SECTION
+   ========================================================================== */
+
+.bio {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  padding: 76px 0 0;
+}
+
+.bio .wrap {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 76px;
+}
+
+.bio-image {
+  position: absolute;
+  right: 1%;
+  bottom: 0;
+  height: 90%;
+  width: auto;
+  max-width: 42%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+}
+
+.bio-text {
+  max-width: 600px;
+}
+
+.real-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  margin-top: 20px;
+}
+
+.bio-heading {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 0.98;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.bio-copy-full {
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.bio-copy-full p {
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.statement {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 24px;
+  max-width: 520px;
+  padding-top: 22px;
+  border-top: 4px solid var(--gold);
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+@media (max-width: 820px) {
+  .bio-image {
+    position: static;
+    height: auto;
+    width: 60%;
+    max-width: 280px;
+    margin: 0 auto 24px;
+  }
+  .bio .wrap { padding-bottom: 40px; }
+  .bio-text { text-align: center; margin: 0 auto; }
+}
+
+
+/* ==========================================================================
+   DISCOGRAPHY SECTION
+   ========================================================================== */
+
+.discog {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.chip-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.cover-art {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.cover-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.06);
+}
+
+.cover-item h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.cover-item p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+  text-transform: uppercase;
+}
+
+/* Used only for tracks that don't have cover art yet. */
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  border: 1.5px dashed rgba(247, 242, 231, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(247, 242, 231, 0.03);
+}
+
+.cover-placeholder svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--gold);
+}
+
+.cover-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  text-align: center;
+  padding: 0 10px;
+}
+
+@media (max-width: 760px) {
+  .cover-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .cover-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ==========================================================================
+   VIDEOS SECTION
+   ========================================================================== */
+
+.videos {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.video-item h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 17px;
+  margin-top: 16px;
+  margin-bottom: 2px;
+}
+
+.video-item p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+@media (max-width: 760px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ==========================================================================
+   ALMA BOY LIVE SECTION
+   Horizontal carousel of event flyers.
+   ========================================================================== */
+
+.live {
+  background: var(--cream);
+}
+
+.live-carousel {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.live-carousel::-webkit-scrollbar { display: none; }
+
+.live-carousel .flyer-slide {
+  flex: 0 0 auto;
+  width: 260px;
+  scroll-snap-align: start;
+}
+
+.live-carousel .flyer-frame {
+  aspect-ratio: 4 / 5;
+  background: var(--black);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.live-carousel .flyer-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.flyer-slide h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 12px;
+  margin-bottom: 2px;
+}
+
+.flyer-slide p {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+
+/* ==========================================================================
+   FIND HIM SECTION
+   "Connect" social cards + "Listen" streaming links.
+   ========================================================================== */
+
+.socials {
+  background: var(--black);
+  color: var(--cream);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-photo {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.social-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.social-info {
+  padding: 18px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.social-card .platform {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.social-card .handle {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.social-card .subhandle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+
+.social-card a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.75;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.social-card a:hover { opacity: 1; }
+
+.listen-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.listen-pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border: 2px solid rgba(247, 242, 231, 0.35);
+  color: var(--cream);
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.listen-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .social-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .social-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ==========================================================================
+   PRESS SECTION (homepage featured interview)
+   A single spotlighted video, not a carousel, this section's job is to
+   say "here's real press" and hand off to press.html for the rest.
+   ========================================================================== */
+
+.gallery {
+  background: var(--cream);
+}
+
+.press-feature-video {
+  max-width: 640px;
+  margin-bottom: 16px;
+}
+
+.press-feature-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 40px;
+}
+
+
+/* ==========================================================================
+   BOOKING SECTION
+   ========================================================================== */
+
+.booking {
+  background: var(--black);
+  color: var(--cream);
+  text-align: center;
+  padding: 88px 0 48px;
+  position: relative;
+}
+
+.booking h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.02;
+  max-width: 760px;
+  margin: 22px auto 18px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.booking p {
+  font-weight: 400;
+  font-size: 17px;
+  max-width: 460px;
+  margin: 0 auto 36px;
+  opacity: 0.85;
+}
+
+.booking-details {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  margin-top: 36px;
+  opacity: 0.7;
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  text-align: center;
+  padding: 26px 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.55;
+  background: var(--black);
+  border-top: 3px solid var(--gold);
+}
+
+
+/* ==========================================================================
+   WAVEFORM (currently unused, kept in case it comes back)
+   ========================================================================== */
+
+.waveform {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 36px;
+  padding: 0 32px;
+  max-width: 1120px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.waveform i {
+  flex: 1;
+  max-width: 6px;
+  border-radius: 1px;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.waveform i:nth-child(3n) { background: var(--gold); }
+.waveform i:nth-child(3n+1) { background: var(--green); }
+.waveform i:nth-child(3n+2) { background: var(--red); }
+
+@keyframes pulse {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+
+/* ==========================================================================
+   PRESS PAGE (press.html)
+   Page header + back-link are shared with every sub-page (Contact,
+   Discography, Bio) once those exist. Photo carousel reuses
+   .gallery-carousel / .slide from the homepage, .photo-tile only adds
+   the hover-to-download button on top.
+   ========================================================================== */
+
+.page-head {
+  padding: 64px 0 40px;
+  border-bottom: 1px solid rgba(247, 242, 231, 0.15);
+}
+
+.page-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 72px);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.page-head p {
+  font-family: var(--font-head);
+  font-size: 17px;
+  opacity: 0.8;
+  max-width: 520px;
+  margin-top: 18px;
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+main {
+  padding: 56px 0 90px;
+}
+
+/* Photo carousel + hover-to-download.
+   Sizing/shape comes from .gallery-carousel and .slide (already defined
+   above, shared with the homepage). .photo-tile only adds the hover
+   download button on top, nothing else. */
+
+.photo-tile {
+  position: relative;
+}
+
+.photo-tile .download-link {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.photo-tile:hover .download-link {
+  opacity: 1;
+}
+
+/* Press coverage list.
+   Read/Watch link sits stacked under the source, not off to the right,
+   and stays gold at rest (not just on hover) so it still reads clickable. */
+
+.press-list {
+  border-top: 1px solid rgba(247, 242, 231, 0.15);
+}
+
+.press-row {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(247, 242, 231, 0.15);
+}
+
+.press-row .press-headline {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 18px;
+  max-width: 640px;
+}
+
+.press-row .press-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-top: 6px;
+}
+
+.press-row a.press-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-top: 12px;
+}
+
+.press-row a.press-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   CONTACT PAGE (contact.html)
+   Left-aligned booking block (unlike the homepage's centered dark
+   version) + the mailing list form.
+   ========================================================================== */
+
+.contact-booking {
+  padding: 0 0 60px;
+  margin-top: -32px;
+}
+
+.contact-booking h2 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+  max-width: 700px;
+  margin-top: 32px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.contact-booking p {
+  font-weight: 400;
+  font-size: 17px;
+  margin-bottom: 18px;
+  opacity: 0.8;
+}
+
+.contact-booking .booking-details {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  margin-top: 28px;
+  opacity: 0.65;
+}
+
+/* Mailing list form */
+
+.mailing-form {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.form-row input {
+  font-family: var(--font-head);
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 2px solid var(--black);
+  background: var(--cream);
+  color: var(--black);
+  border-radius: 0;
+}
+
+.form-row input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.mailing-form button {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   DISCOGRAPHY PAGE (discography.html)
+   Dense grid, roughly a quarter the size of the homepage's featured
+   covers, 6 across on desktop instead of 3.
+   ========================================================================== */
+
+.disc-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.disc-art {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.disc-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.disc-item h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.disc-item p {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .disc-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .disc-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 420px) {
+  .disc-grid { grid-template-columns: repeat(2, 1fr); }
+}
