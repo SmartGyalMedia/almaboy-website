@@ -954,6 +954,73 @@ main {
   opacity: 1;
 }
 
+/* ==========================================================================
+   GALLERY CAROUSEL
+   Shared horizontal-scroll pattern used by the Press page's photo
+   carousel (and previously the homepage too, before that became a
+   single featured video instead).
+   ========================================================================== */
+
+.gallery-carousel {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.gallery-carousel::-webkit-scrollbar { display: none; }
+
+.gallery-carousel .slide {
+  flex: 0 0 auto;
+  width: 280px;
+  aspect-ratio: 2 / 3;
+  scroll-snap-align: start;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+.gallery-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.carousel-arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-btn {
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--black);
+  background: transparent;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.15s ease;
+}
+
+.carousel-btn:hover { transform: translateY(-2px); }
+
+@media (max-width: 600px) {
+  .gallery-carousel .slide { width: 220px; }
+}
+
 /* Press coverage list.
    Read/Watch link sits stacked under the source, not off to the right,
    and stays gold at rest (not just on hover) so it still reads clickable. */
