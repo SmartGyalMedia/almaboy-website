@@ -38,6 +38,18 @@
         <li><a href="press.html">Press</a></li>
       </ul>
 
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="bio.html">Bio</a>
+      <a href="discography.html">Discography</a>
+      <a href="#live">Alma Boy Live</a>
+      <a href="contact.html">Contact</a>
+      <a href="press.html">Press</a>
     </div>
   </nav>
 
@@ -439,7 +451,7 @@
 
 
   <!-- ============================================================
-       SCRIPT — press photos carousel prev/next buttons
+       SCRIPT - press photos carousel prev/next buttons
        ============================================================ -->
 
   <script>
@@ -456,6 +468,23 @@
 
         prev.addEventListener('click', function () { car.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }); });
         next.addEventListener('click', function () { car.scrollBy({ left: scrollAmt(), behavior: 'smooth' }); });
+      }
+    })();
+  </script>
+
+<!-- ============================================================
+       SCRIPT - mobile nav toggle
+       ============================================================ -->
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var menu = document.getElementById('mobileMenu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          menu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+        });
       }
     })();
   </script>
