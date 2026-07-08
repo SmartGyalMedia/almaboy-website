@@ -277,7 +277,7 @@ nav .wrap {
     padding: 24px 16px 0;
     min-height: 0;
   }
-  
+
 .hero-cutout {
     order: 2;
     position: static;
@@ -317,15 +317,14 @@ nav .wrap {
   }
 
 .hero-ctas {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: max-content;
+    justify-content: center;
     gap: 8px;
   }
-
   .hero-ctas .btn {
-    width: 180px;
-    padding: 10px 14px;
-    font-size: 10px;
+    padding: 10px 16px;
+    font-size: 11px;
     text-align: center;
   }
 
