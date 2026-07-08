@@ -249,6 +249,10 @@ nav .wrap {
   margin-bottom: 30px;
 }
 
+.hero-sub-mobile {  /* this hides the mobile version when on web browser*/
+  display: none;
+}
+
 .hero-ctas {
   display: flex;
   gap: 14px;
@@ -273,15 +277,17 @@ nav .wrap {
     padding: 24px 16px 0;
     min-height: 0;
   }
-  .hero-cutout {
+  
+.hero-cutout {
     order: 2;
     position: static;
     flex: 0 0 auto;
-    width: 30%;
-    max-width: 130px;
+    width: 42%;
+    max-width: 190px;
     height: auto;
     margin-bottom: -24px;
   }
+
   .hero-content {
     order: 1;
     flex: 1;
@@ -309,16 +315,20 @@ nav .wrap {
     font-size: 12px;
     line-height: 1.5;
   }
-  .hero-ctas {
+
+.hero-ctas {
     flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
   }
+
   .hero-ctas .btn {
+    width: 180px;
     padding: 10px 14px;
     font-size: 10px;
     text-align: center;
   }
+
   .hero-spotify {
     display: none;
   }
